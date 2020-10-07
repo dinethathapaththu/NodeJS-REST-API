@@ -6,17 +6,15 @@
         "targets": {
           "node": "current"
         }
-      },
-      "react"
+      }
     ]
   ],
   "plugins": [
     [
-      "transform-object-rest-spread",
+      "@babel/plugin-proposal-object-rest-spread",
       {
         "useBuiltIns": true
-      },
-      "proposal-object-rest-spread"
+      }
     ]
   ]
 }

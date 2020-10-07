@@ -4,6 +4,7 @@ import { Strategy as JWTStrategy, ExtractJwt } from "passport-jwt";
 
 import User from "../modules/users/user.model";
 import constants from "../config/constants";
+
 // Local strategy
 const localOpts = {
   usernameField: "email",
@@ -29,7 +30,7 @@ const localStrategy = new LocalStrategy(
 
 // Jwt strategy
 const jwtOpts = {
-  jwtFromRequest: ExtractJwt.fromHeader("authorization"),
+  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
   secretOrKey: constants.JWT_SECRET,
 };
 

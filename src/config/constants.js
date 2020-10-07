@@ -1,14 +1,14 @@
 const devConfig = {
-  MONGO_URL: 'mongodb://localhost/makeanodejsapi-dev',
-  JWT_SECRET: 'thisisasecret',
+  MONGO_URL: "mongodb://localhost/makeanodejsapi-dev",
+  JWT_SECRET: "thisisasecret",
 };
 
 const testConfig = {
-  MONGO_URL: 'mongodb://localhost/makeanodejsapi-test',
+  MONGO_URL: "mongodb://localhost/makeanodejsapi-test",
 };
 
 const prodConfig = {
-  MONGO_URL: 'mongodb://localhost/makeanodejsapi-prod',
+  MONGO_URL: "mongodb://localhost/makeanodejsapi-prod",
 };
 
 const defaultConfig = {
@@ -17,9 +17,9 @@ const defaultConfig = {
 
 function envConfig(env) {
   switch (env) {
-    case 'development':
+    case "development":
       return devConfig;
-    case 'test':
+    case "test":
       return testConfig;
     default:
       return prodConfig;

@@ -1,17 +1,17 @@
 import express from "express";
-import constants from './config/constants';
-import './config/database';
-import middlewaresConfig from './config/middlewares';
-import apiRoutes from './modules';
+import constants from "./config/constants";
+import "./config/database";
+import middlewaresConfig from "./config/middlewares";
+import apiRoutes from "./modules";
 
 console.log(constants);
 
 const app = express();
 middlewaresConfig(app);
 
-app.get('/',(req,res) => {
-  res.send('Hello world');
-})
+app.get("/", (req, res) => {
+  res.send("Hello world");
+});
 
 apiRoutes(app);
 

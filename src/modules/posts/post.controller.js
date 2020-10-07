@@ -1,5 +1,5 @@
 import Post from "./post.model";
-import User from '../users/user.model';
+import User from "../users/user.model";
 import HTTPStatus from "http-status";
 
 export async function createPost(req, res) {
@@ -15,7 +15,7 @@ export async function getPostById(req, res) {
   try {
     const promise = await Promise.all([
       User.findById(req.user._id),
-      Post.findById(req.params.id).populate('user')
+      Post.findById(req.params.id).populate("user"),
     ]);
 
     const favorite = promise[0]._favorites.isPostIsFavorite(req.params.id);
@@ -23,7 +23,7 @@ export async function getPostById(req, res) {
 
     return res.status(HTTPStatus.OK).json({
       ...post.toJSON(),
-      favorite
+      favorite,
     });
   } catch (e) {
     return res.status(HTTPStatus.BAD_REQUEST).json(e);
@@ -36,7 +36,7 @@ export async function getPostsList(req, res) {
   try {
     const promise = await Promise.all([
       User.findById(req.user._id),
-      Post.list({ limit, skip })
+      Post.list({ limit, skip }),
     ]);
 
     const posts = promise[1].reduce((arr, post) => {
@@ -44,7 +44,7 @@ export async function getPostsList(req, res) {
 
       arr.push({
         ...post.toJSON(),
-        favorite
+        favorite,
       });
 
       return arr;
@@ -60,12 +60,11 @@ export async function updatePost(req, res) {
   try {
     const post = await Post.findById(req.query.id);
 
-
     if (!post.user.equals(req.user._id)) {
       return res.sendStatus(HTTPStatus.UNAUTHORIZED);
     }
 
-    Object.keys(req.body).forEach(key => {
+    Object.keys(req.body).forEach((key) => {
       post[key] = req.body[key];
     });
 
